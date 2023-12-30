@@ -3,9 +3,12 @@ import datetime, time
 import threading
 
 db = src.db.User()
+MySQL = src.db.MySQL()
 
-def add_client():
-    pass
+def add_client(user, rank, plan):
+    date_actuelle = datetime.date.today()
+    duration = date_actuelle + datetime.timedelta(days=30)
+    MySQL.execute_insert("INSERT INTO users (user, rank, plan, duration) VALUES (%s, %s, %s, %s, %s)", (user, rank, plan, duration))
 
 def revoke_client():
     try:
