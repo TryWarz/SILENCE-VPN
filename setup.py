@@ -3,6 +3,8 @@ import getpass, os
 
 import tests
 
+
+
 def install_require():
     if getpass.getuser() == "root":
         c = input("Do you want to install Silence VPN? (y/n): ")
