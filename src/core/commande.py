@@ -1,6 +1,6 @@
 import src.interface as interface 
 import src.db as db
-
+import script
 from src.core.download import Zip
 import getpass
 
@@ -9,17 +9,29 @@ class Commande:
         pass
 
     def Commande():
-        Commande = input(f"")
-    
-        match Commande:
-            case "help":
-                interface.ASCII().home()
+        while True:
+            Commande = input(f"")
+        
+            match Commande:
+                case "help":
+                    interface.ASCII().home()
 
-            case "plans":
-                pass
-
-            case "download":
-                if db.User(plan=db.User(username=getpass.getuser()).get_plan_by_username).get_plans_by_name() == "free":
-                    raise ValueError("You are not allowed to use this command.")
-                else:
-                    Zip().send(user=getpass.getuser(), url=input("URL WEBHOOK: "))
+                case "plans":
+                    pass
+                
+                case "download":
+                    if db.User(plan=db.User(username=getpass.getuser()).get_plan_by_username).get_plans_by_name() == "free":
+                        raise ValueError("You are not allowed to use this command.")
+                    else:
+                        Zip().send(user=getpass.getuser(), url=input("URL WEBHOOK: "))
+                case "adduser":
+                    if db.User(username=getpass.getuser()).get_rank_by_username() == "admin":
+                        script.subscribe.add_client(user=input("Username: "), rank=input("Rank: "), plan=input("Plan: "))
+                    else:
+                        raise ValueError("You are not allowed to use this command.")
+                case "revoke":
+                    if db.User(username=getpass.getuser()).get_rank_by_username() == "admin":
+                        script.subscribe.revoke_client()
+                    else:
+                        raise ValueError("You are not allowed to use this command.")
+                    

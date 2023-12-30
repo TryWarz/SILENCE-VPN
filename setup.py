@@ -1,6 +1,6 @@
 from setuptools import setup
 import getpass, os
-
+import src.main                                  
 import tests
 
 

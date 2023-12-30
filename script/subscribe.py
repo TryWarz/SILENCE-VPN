@@ -48,7 +48,7 @@ class subscribe:
             print(f"Error connecting to the database: {e}")
 
 
-    def auto_check():
+    def auto_check(self):
         while True:
-            revoke_client()
+            self.revoke_client()
             time.sleep(300)
