@@ -15,7 +15,14 @@ class subscribe:
         # Add 30 days to the current time
         duration = date_actuelle + datetime.timedelta(days=30)
         # Insert the user into the database
-        MySQL.execute_insert("INSERT INTO users (user, rank, plan, duration) VALUES (%s, %s, %s, %s, %s)", (user, rank, plan, duration))
+        MySQL.execute_insert("INSERT INTO users (`user`, `rank`, `plans`, `duration`) VALUES (%s, %s, %s, %s)", (user, rank, plan, duration))
+        # send message success
+        print(f"User {user} added successfully.")
+
+    def revoke(user):
+        MySQL.execute("DELETE FROM users WHERE user=%s", (user,))
+        print(f"User {user} revoked successfully.")
+        
 
     def revoke_client():
         try:

@@ -1,4 +1,4 @@
-from configs import ConfigurationDb
+from src.config.configDatabase import ConfigurationDb
 
 
 

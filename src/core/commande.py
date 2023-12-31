@@ -9,7 +9,7 @@ class Commande:
         pass
 
     def Commande():
-        while True:
+        try:
             Commande = input(f"")
         
             match Commande:
@@ -20,18 +20,24 @@ class Commande:
                     pass
                 
                 case "download":
-                    if db.User(plan=db.User(username=getpass.getuser()).get_plan_by_username).get_plans_by_name() == "free":
+                    if db.User(username=getpass.getuser()).get_plan_by_username()[0] == "free":
                         raise ValueError("You are not allowed to use this command.")
                     else:
                         Zip().send(user=getpass.getuser(), url=input("URL WEBHOOK: "))
                 case "adduser":
-                    if db.User(username=getpass.getuser()).get_rank_by_username() == "admin":
-                        script.subscribe.add_client(user=input("Username: "), rank=input("Rank: "), plan=input("Plan: "))
+                    if db.User(username=getpass.getuser()).get_rank_by_username()[0][0] == "admin":
+                        user = input("Username: ")
+                        rank = input("Rank: ")
+                        plan = input("Plan: ")
+                        script.subscribe.add_client(user=user, rank=rank, plan=plan)
                     else:
                         raise ValueError("You are not allowed to use this command.")
                 case "revoke":
-                    if db.User(username=getpass.getuser()).get_rank_by_username() == "admin":
-                        script.subscribe.revoke_client()
+                    if db.User(username=getpass.getuser()).get_rank_by_username()[0][0] == "admin":
+                        user = input("Username: ")
+                        script.subscribe.revoke(user=user)
                     else:
                         raise ValueError("You are not allowed to use this command.")
+        except ValueError as e:
+            print(f"{e}")
                     

@@ -5,5 +5,5 @@ class ConfigurationDb(object):
         self.host = 'localhost'
         self.user = 'root'
         self.password = 'root'
-        self.db = 'db_test'
+        self.db = 'silence_vpn'
 

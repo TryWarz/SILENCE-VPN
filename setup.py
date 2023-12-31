@@ -1,8 +1,8 @@
 from setuptools import setup
 import getpass, os
-import src.main                                  
-import tests
-
+import src.db
+import src.core
+import src.interface
 
 
 def install_require():
@@ -23,26 +23,50 @@ def install_require():
         else:
             print("Aborting installation...")
 
-def test_db():
-    print("Testing Silence VPN...")
-    print("Testing connection to database...")
-    if tests.DatabaseConnectionTest().main():
-        print("Connection to database failed.")
-    else:
-        print("Connection to database successed.")
+# def test_db():
+#     print("Testing Silence VPN...")
+#     print("Testing connection to database...")
+#     if tests.DatabaseConnectionTest().main():
+#         print("Connection to database failed.")
+#     else:
+#         print("Connection to database successed.")
 
 
-with open("README.md", "r") as fh:
-    long_description = fh.read()
+# with open("README.md", "w") as fh:
+#     long_description = fh.read()
+def setup():
+    
+    setup(
+        name="Silence VPN",
+        version="0.0.1",
+        author="TryWarz",
+        author_email="trywarz.contact@gmail.com",
+        description="Silence VPN is a VPN written in Python.",
+        install_requires=[
+            "colorama",
+            "pymysql",
+            "requests"
+        ],
 
-setup(
-    name="Silence VPN",
-    version="0.0.1",
-    author="TryWarz",
-    author_email="trywarz.contact@gmail.com",
-    description="Silence VPN is a VPN written in Python.",
-)
+        entry_points={
+            'console_scripts': [
+                'silencevpn=src.main:main',
+            ],
+        },
+        classifiers=[
+            'Development Status :: 3 - Alpha',
+            'Intended Audience :: Developers',
+            'License :: OSI Approved :: MIT License',
+            'Programming Language :: Python :: 3.6',
+            'Programming Language :: Python :: 3.7',
+            'Programming Language :: Python :: 3.8',
+        ],
+
+    )
 
 if __name__ == "__main__":
     install_require()
-    test_db()
+    while True:
+        src.interface.ASCII().home()
+        src.core.Commande.Commande()
+    

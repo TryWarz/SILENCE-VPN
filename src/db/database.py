@@ -5,7 +5,7 @@ db = ConfigurationDb()
 
 class MySQL:
     def __init__(self):
-        self.db_name = db.user
+        self.db_name = db.db
         self.db_host = db.host
         self.db_password = db.password
         self.db_user = db.user

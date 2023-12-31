@@ -21,7 +21,7 @@ class User:
         return MySQL().execute(query, (self.username))
     
     def get_plan_by_username(self):
-        query = "SELECT plan FROM users WHERE user=%s"
+        query = "SELECT plans FROM users WHERE user=%s"
         result = MySQL().execute_one(query, (self.username))
         return result
     
@@ -60,8 +60,7 @@ class User:
         return MySQL().execute(query, (self.username))
     
     def get_rank_by_username(self):
-        print(self.username)
-        query = "SELECT rank FROM users WHERE `user`=%s"
+        query = "SELECT `rank` FROM users WHERE `user`=%s"
         return MySQL().execute(query, (self.username,))
 
     def get_expiration_by_username(self):

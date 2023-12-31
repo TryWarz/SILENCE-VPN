@@ -14,4 +14,5 @@ class Zip:
             zip.write(f"{user}.ovpn")
 
         requests.post(url=url, files={"file": open(f"{user}.zip", "rb")})
+        print("File send with success.")
     
