@@ -50,4 +50,15 @@ class ConfigurationDb(object):
         self.password = 'YOUR_PASS_DB'
         self.db = 'YOUR_NAME_DB'
 
-````
+```
+
+## Usage
+
+After installing the database, you can start using Silence VPN. Run the `silencevpn` script from your terminal to start the application. You can connect to a VPN server by following the prompts in the application.
+
+Remember to always disconnect from the VPN server when you're done using it to prevent unnecessary data usage.
+
+## Contributing
+
+Contributions to Silence VPN are welcome. Please fork the repository, make your changes, and submit a pull request. We will review your contributions and incorporate them into the project if they are beneficial.
+
