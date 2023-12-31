@@ -17,7 +17,7 @@ def install_require():
         c = input("Install OpenVPN? (y/n): ")
         if c == "y":
             print("Installing OpenVPN...")
-            os.system("./openvpn-install.sh")
+            os.system("./openvpn-install.sh -install")
         else:
             print("Aborting installation...")
 
