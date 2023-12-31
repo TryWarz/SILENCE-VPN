@@ -2,8 +2,8 @@
 
 class ConfigurationDb(object):
     def __init__(self):
-        self.host = 'localhost'
-        self.user = 'root'
-        self.password = 'root'
-        self.db = 'silence_vpn'
+        self.host = ''
+        self.user = ''
+        self.password = ''
+        self.db = ''
 
