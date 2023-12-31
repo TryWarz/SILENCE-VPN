@@ -18,7 +18,7 @@ class Commande:
         
             match Commande:
                 case "help":
-                    interface.ASCII().home()
+                    interface.ASCII().help()
 
                 case "plans":
                     interface.ASCII().cls()
