@@ -1,8 +1,8 @@
 import src.core
 import src.interface
-import signal, threading
-import script
-
+import src.db as db
+import signal, threading, getpass, time
+import script 
 
 
 class Main():
@@ -11,9 +11,15 @@ class Main():
     
     def run(self):
         signal.signal(signal.SIGINT, signal.SIG_IGN)
-        src.interface.ASCII().home()
-        while True:
-            src.core.Commande.Commande()
+        if db.User(username=getpass.getuser()).get_plan_by_username()[0] == "free":
+            while True:
+                src.interface.ASCII().blocked()
+                time.sleep(1)
+                src.interface.ASCII().cls()
+        else:
+            src.interface.ASCII().home()
+            while True:
+                src.core.Commande.Commande()
             
     
 

@@ -13,8 +13,8 @@ class ASCII:
 ███████║██║███████╗███████╗██║ ╚████║╚██████╗███████╗     ╚████╔╝ ██║     ██║ ╚████║
 ╚══════╝╚═╝╚══════╝╚══════╝╚═╝  ╚═══╝ ╚═════╝╚══════╝      ╚═══╝  ╚═╝     ╚═╝  ╚═══╝
 
-              
-                                                                    
+
+
 """.replace('█', F.RED+'█'+F.RESET))
     
     def help(self):
@@ -28,7 +28,7 @@ class ASCII:
    ╚╔═╗――――――――――――――――――――――――――――――――――――――――――――――――――╔═╗╝           
     ║H║ {F.WHITE}[DOWNLOAD]       {F.WHITE}->{F.RED}      for download .ovpn      ║H║
     ║E║ {F.WHITE}[PLAN]           {F.WHITE}->{F.RED}      info your plans         ║E║
-    ║L║ {F.WHITE}[UPTIME]         {F.WHITE}->{F.RED}      Uptime Machine          ║L║
+    ║L║                                                  ║L║
     ║P║                                                  ║P║
     ║#║                                                  ║#║
    ╔╚═╝――――――――――――――――――――――――――――――――――――――――――――――――――╚═╝╗                                                       
@@ -49,7 +49,16 @@ class ASCII:
     ║O║ {F.WHITE}duration     {F.RED}>     {F.WHITE}{duration}{F.RED}          
    ╔╚═╝―――――――――――――――――――――――――――――――――――――――――――――――――――――╗                                                       
    ╚════════════════════════════════════════════════════════╝           
-              """)  
+              """)
+        
+    def blocked(self):
+        print("""
+            ┌────────────────� SILENCE �──────────────────┐
+            │         USER BLOCKED BUY FOR ACCES          │
+            └─────────────────────────────────────────────┘
+            """)
+    
+
     def cls(self):
         if platform.system() == "Windows":
             os.system("cls")
