@@ -2,7 +2,10 @@ import src.interface as interface
 import src.db as db
 import script
 from src.core.download import Zip
-import getpass
+from colorama import Fore as F
+import getpass, os , platform
+import datetime
+
 
 class Commande:
     def __init__(self):
@@ -10,14 +13,22 @@ class Commande:
 
     def Commande():
         try:
-            Commande = input(f"")
+            print(f"{F.LIGHTBLACK_EX}┌⎯⎯⎯ [{F.LIGHTWHITE_EX} Silence ∙ {getpass.getuser()} {F.LIGHTBLACK_EX}]")
+            Commande = input("└───➤  ").lower()
         
             match Commande:
                 case "help":
                     interface.ASCII().home()
 
                 case "plans":
-                    pass
+                    interface.ASCII().cls()
+                    username = getpass.getuser()
+                    rank = db.User(username=username).get_rank_by_username()[0][0]
+                    plan = db.User(username=username).get_plan_by_username()[0]
+                    duration = db.User(username=username).get_duration_by_username()[0]
+                    duration = db.User(username=username).get_duration_by_username()[0][0]  
+                    duration_formatted = datetime.datetime.strptime(str(duration), "%Y-%m-%d %H:%M:%S").strftime("%d/%m/%Y %H:%M:%S")
+                    interface.ASCII().plans(user=username, rank=rank, plan=plan, duration=duration_formatted)
                 
                 case "download":
                     if db.User(username=getpass.getuser()).get_plan_by_username()[0] == "free":

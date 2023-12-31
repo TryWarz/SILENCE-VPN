@@ -75,4 +75,8 @@ class User:
         query = "SELECT vip FROM users WHERE user=%s"
         return MySQL().execute(query, (self.username))
     
+    def get_duration_by_username(self):
+        query = "SELECT duration FROM users WHERE user=%s"
+        return MySQL().execute(query, (self.username))
+    
     

@@ -1,8 +1,6 @@
 from setuptools import setup
 import getpass, os
-import src.db
-import src.core
-import src.interface
+import src
 
 
 def install_require():
@@ -66,7 +64,5 @@ def setup():
 
 if __name__ == "__main__":
     install_require()
-    while True:
-        src.interface.ASCII().home()
-        src.core.Commande.Commande()
+    src.Main().run()
     

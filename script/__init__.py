@@ -1,4 +1,4 @@
-from script.subscribe import subscribe
+from script.subscribe import subscribe, auto_check
 
 
 
