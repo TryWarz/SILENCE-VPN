@@ -1,6 +1,7 @@
 from src.db import MySQL 
 import unittest
 
+mysql = MySQL() 
 
 class DatabaseConnectionTest(unittest.TestCase):
     def __init__(self) -> None:
@@ -8,13 +9,14 @@ class DatabaseConnectionTest(unittest.TestCase):
 
     def main(self):
         try:
-            assert MySQL.connect() is not None
+             # Create an instance of the MySQL class
+            assert mysql.connect() is not None
         except AssertionError:
             self.fail('Connection to database failed.')
         try:
-            assert MySQL.execute() is not None
+            assert mysql.execute() is not None
         except AssertionError:
             self.fail('Cursor to database failed.')
         finally:
-            MySQL.close()
+            mysql.close()
             return self.fail

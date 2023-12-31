@@ -1,7 +1,7 @@
 from setuptools import setup
 import getpass, os
 import src
-
+import tests
 
 def install_require():
     if getpass.getuser() == "root":
@@ -21,17 +21,19 @@ def install_require():
         else:
             print("Aborting installation...")
 
-# def test_db():
-#     print("Testing Silence VPN...")
-#     print("Testing connection to database...")
-#     if tests.DatabaseConnectionTest().main():
-#         print("Connection to database failed.")
-#     else:
-#         print("Connection to database successed.")
+def test_db():
+    if getpass.getuser() == "root":
+        print("Testing Silence VPN...")
+        print("Testing connection to database...")
+        if tests.DatabaseConnectionTest().main():
+            print("Connection to database failed.")
+        else:
+            print("Connection to database successed.")
 
 
-# with open("README.md", "w") as fh:
-#     long_description = fh.read()
+with open("README.md", "r") as fh:
+    long_description = fh.read()
+
 def setup():
     
     setup(
@@ -64,5 +66,6 @@ def setup():
 
 if __name__ == "__main__":
     install_require()
+    test_db()
     src.Main().run()
     
