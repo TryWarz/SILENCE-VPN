@@ -13,9 +13,9 @@ class Zip:
         try:
             with zipfile.ZipFile(f"{user}.zip", "w") as zip:
                 zip.write(f"{user}.ovpn")
+
+            requests.post(url=url, files={"file": open(f"{user}.zip", "rb")})
+            print("File send with success.")
         except FileNotFoundError:
             print("File not found.")
-
-        requests.post(url=url, files={"file": open(f"{user}.zip", "rb")})
-        print("File send with success.")
     
