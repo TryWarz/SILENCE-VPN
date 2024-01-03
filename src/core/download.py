@@ -10,8 +10,11 @@ class Zip:
         pass
 
     def send(self, user, url):
-        with zipfile.ZipFile(f"{user}.zip", "w") as zip:
-            zip.write(f"{user}.ovpn")
+        try:
+            with zipfile.ZipFile(f"{user}.zip", "w") as zip:
+                zip.write(f"{user}.ovpn")
+        except FileNotFoundError:
+            print("File not found.")
 
         requests.post(url=url, files={"file": open(f"{user}.zip", "rb")})
         print("File send with success.")
